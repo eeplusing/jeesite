@@ -15,6 +15,36 @@
 	<!-- 当前页的css -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/static/libgis/opengis/hanzhong.css">
 	<style type="text/css">
+	#searchBoxOut{
+    	border:0px solid #F00;
+    	width:390px;
+    	height:50px;
+    	background-color:#F7F7F7;
+    }
+    
+    #searchBoxOut img{
+    	width:30px;
+    	height:30px;
+    	margin-top:10px;
+    }
+   
+    #changeLayer{
+    	float:left;
+    	margin-left:5px;
+    	margin-right:5px;
+    }
+	 #searchBoxOut input{
+		margin-top:8px;
+    	width:310px;
+    	height:30px;
+    	float:left;
+    	font-size:16px;
+    	border:none;
+    }
+    
+     #searchBtnOut{
+    	float:right;
+    }
     	
 	</style>
   </head>
@@ -41,7 +71,7 @@
 			</div>
 			<div id="searchBox">
 				<input id="searchContent" type="text" placeholder="输入查询条件 回车搜索" autofocus x-webkit-speech lang="zh-CN">
-	  			<input id="searchBtn" type="button" alt="查询" value="查  询" onclick="searchDetail();">
+	  			<input id="searchBtnOut" type="button" alt="查询" value="查  询" onclick="searchDetail();">
 			</div>
 			<div style="clear: both;"></div><br>
 			<div>
@@ -92,10 +122,17 @@
    </div>
       
   	<div id="map" class="map" style="border:1px solid #F00;">
-  	<div id="search_group" class="search_group">
-    <input id="search_input" class="search_input">
-    <button id="search_button" class="search_button" type="button">搜索！</button>
-	</div>
+	  	<div id="searchBoxOut">
+	  		<div>
+	  			<img id="changeLayer" alt="切换图层" title="切换图层" src="${pageContext.request.contextPath}/static/libgis//images/dropdown.png">
+	  		</div>
+	  		<div>
+	  			<input type="text" class=""  autofocus="autofocus" placeholder="请输入查询条件"/>
+	  		</div>
+			<div>
+	  			<img id="searchBtnOut" alt="切换图层"  title="查询" src="${pageContext.request.contextPath}/static/libgis/images/searchInfo.png">
+	  		</div>
+		</div>
   	</div>
     
     <!-- 当前页的js：
