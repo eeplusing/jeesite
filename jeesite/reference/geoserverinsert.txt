@@ -1,0 +1,19 @@
+<Transaction xmlns="http://www.opengis.net/wfs" service="WFS" version="1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd">
+	<Insert>
+		<wfst_test xmlns="http://localhost:9000/geoserver">
+			<geometry>
+				<MultiPolygon xmlns="http://www.opengis.net/gml">
+					<polygonMember>
+						<Polygon>
+							<exterior>
+								<LinearRing>
+									<posList>496103.1612561045 5459692.547757948 498145.56283569714 5459444.40550996 497248.43316989474 5458222.78213525 495740.4918167376 5459177.175396742 496103.1612561045 5459692.547757948</posList>
+								</LinearRing>
+							</exterior>
+						</Polygon>
+					</polygonMember>
+				</MultiPolygon>
+			</geometry>
+		</wfst_test>
+	</Insert>
+</Transaction>
