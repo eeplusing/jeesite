@@ -91,7 +91,12 @@
      </div>
    </div>
       
-  	<div id="map" class="map"></div>
+  	<div id="map" class="map" style="border:1px solid #F00;">
+  	<div id="search_group" class="search_group">
+    <input id="search_input" class="search_input">
+    <button id="search_button" class="search_button" type="button">搜索！</button>
+	</div>
+  	</div>
     
     <!-- 当前页的js：
     	地图的主要操作均在此js中定义
