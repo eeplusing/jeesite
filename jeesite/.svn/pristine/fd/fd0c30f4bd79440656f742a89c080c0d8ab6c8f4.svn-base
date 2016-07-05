@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.gis.dao.GisDJQDao">
+    
+	<sql id="gisDJQColumns">
+		a.id AS "id",
+		a.djq_unit_code AS "djqUnitCode",
+		a.area AS "area",
+		a.name AS "name",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag",
+		a.owner AS "owner"
+	</sql>
+	
+	<sql id="gisDJQJoins">
+	</sql>
+    
+	<select id="get" resultType="GisDJQ">
+		SELECT 
+			<include refid="gisDJQColumns"/>
+		FROM gis_djq a
+		<include refid="gisDJQJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="GisDJQ">
+		SELECT 
+			<include refid="gisDJQColumns"/>
+		FROM gis_djq a
+		<include refid="gisDJQJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="name != null and name != ''">
+				AND a.name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="GisDJQ">
+		SELECT 
+			<include refid="gisDJQColumns"/>
+		FROM gis_djq a
+		<include refid="gisDJQJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO gis_djq(
+			id,
+			djq_unit_code,
+			area,
+			name,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag,
+			owner
+		) VALUES (
+			#{id},
+			#{djqUnitCode},
+			#{area},
+			#{name},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag},
+			#{owner}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE gis_djq SET 	
+			djq_unit_code = #{djqUnitCode},
+			area = #{area},
+			name = #{name},
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks},
+			owner = #{owner}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE gis_djq SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
