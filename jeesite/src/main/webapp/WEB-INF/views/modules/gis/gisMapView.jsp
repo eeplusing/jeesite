@@ -121,7 +121,7 @@
      </div>
    </div>
       
-  	<div id="map" class="map" style="border:1px solid #F00;">
+  	<div id="map" class="map" style="border:0px solid #F00;">
 	  	<%-- <div id="searchBoxOut">
 	  		<div>
 	  			<img id="changeLayer" alt="切换图层" title="切换图层" src="${pageContext.request.contextPath}/static/libgis//images/dropdown.png">
